@@ -1,0 +1,3 @@
+Para calcular el aura de un oyente, se debe considerar el promedio de la energia, valencia y bailabilidad de todas las canciones
+
+Utilizar este metodo no es tan eficiente por las tendencias de músicas que puede seguir un oyente a lo largo de varios años. Lo más recomendable es realizar todo este promedio a lo largo del tiempo y de esta forma determinar su aura

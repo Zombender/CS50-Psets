@@ -1,0 +1,136 @@
++------+--------+---------------+---------+
+| hour | minute | license_plate |  name   |
++------+--------+---------------+---------+
+| 10   | 16     | 5P2BI95       | Vanessa |
+| 10   | 18     | 94KL13X       | Bruce   |
+| 10   | 18     | 6P58WS2       | Barry   |
+| 10   | 19     | 4328GD8       | Luca    |
+| 10   | 20     | G412CB7       | Sofia   |
+| 10   | 21     | L93JTIZ       | Iman    |
+| 10   | 23     | 322W7JE       | Diana   |
+| 10   | 23     | 0NTHK55       | Kelsey  |
++------+--------+---------------+---------+
++----------------+---------+----------------+-------+-----+
+| account_number |  name   |    receiver    | month | day |
++----------------+---------+----------------+-------+-----+
+| 28296815       | Kenny   | (066) 555-9701 | 7     | 28  |
+| 76054385       | Taylor  | (676) 555-6554 | 7     | 28  |
+| 49610011       | Bruce   | (375) 555-8161 | 7     | 28  |
+| 49610011       | Bruce   | (455) 555-5315 | 7     | 28  |
+| 81061156       | Benista | (704) 555-2131 | 7     | 28  |
+| 26013199       | Diana   | (725) 555-3243 | 7     | 28  |
++----------------+---------+----------------+-------+-----+
+
+CREATE TABLE crime_scene_reports (
+    id INTEGER,
+    year INTEGER,
+    month INTEGER,
+    day INTEGER,
+    street TEXT,
+    description TEXT,
+    PRIMARY KEY(id)
+);
+CREATE TABLE interviews (
+    id INTEGER,
+    name TEXT,
+    year INTEGER,
+    month INTEGER,
+    day INTEGER,
+    transcript TEXT,
+    PRIMARY KEY(id)
+);
+CREATE TABLE atm_transactions (
+    id INTEGER,
+    account_number INTEGER,
+    year INTEGER,
+    month INTEGER,
+    day INTEGER,
+    atm_location TEXT,
+    transaction_type TEXT,
+    amount INTEGER,
+    PRIMARY KEY(id)
+);
+CREATE TABLE bank_accounts (
+    account_number INTEGER,
+    person_id INTEGER,
+    creation_year INTEGER,
+    FOREIGN KEY(person_id) REFERENCES people(id)
+);
+CREATE TABLE airports (
+    id INTEGER,
+    abbreviation TEXT,
+    full_name TEXT,
+    city TEXT,
+    PRIMARY KEY(id)
+);
+CREATE TABLE flights (
+    id INTEGER,
+    origin_airport_id INTEGER,
+    destination_airport_id INTEGER,
+    year INTEGER,
+    month INTEGER,
+    day INTEGER,
+    hour INTEGER,
+    minute INTEGER,
+    PRIMARY KEY(id),
+    FOREIGN KEY(origin_airport_id) REFERENCES airports(id),
+    FOREIGN KEY(destination_airport_id) REFERENCES airports(id)
+);
+CREATE TABLE passengers (
+    flight_id INTEGER,
+    passport_number INTEGER,
+    seat TEXT,
+    FOREIGN KEY(flight_id) REFERENCES flights(id)
+);
+CREATE TABLE phone_calls (
+    id INTEGER,
+    caller TEXT,
+    receiver TEXT,
+    year INTEGER,
+    month INTEGER,
+    day INTEGER,
+    duration INTEGER,
+    PRIMARY KEY(id)
+);
+CREATE TABLE people (
+    id INTEGER,
+    name TEXT,
+    phone_number TEXT,
+    passport_number INTEGER,
+    license_plate TEXT,
+    PRIMARY KEY(id)
+);
+CREATE TABLE bakery_security_logs (
+    id INTEGER,
+    year INTEGER,
+    month INTEGER,
+    day INTEGER,
+    hour INTEGER,
+    minute INTEGER,
+    activity TEXT,
+    license_plate TEXT,
+    PRIMARY KEY(id)
+);
++----------------+-------------+----------------+---------------+-------+-----+
+| account_number | sender_name |    receiver    | receiver_name | month | day |
++----------------+-------------+----------------+---------------+-------+-----+
+| 28296815       | Kenny       | (066) 555-9701 | Doris         | 7     | 28  |
+| 76054385       | Taylor      | (676) 555-6554 | James         | 7     | 28  |
+| 49610011       | Bruce       | (375) 555-8161 | Robin         | 7     | 28  |
+| 49610011       | Bruce       | (455) 555-5315 | Charlotte     | 7     | 28  |
+| 81061156       | Benista     | (704) 555-2131 | Anna          | 7     | 28  |
+| 26013199       | Diana       | (725) 555-3243 | Philip        | 7     | 28  |
++----------------+-------------+----------------+---------------+-------+-----+
+
++--------+------+
+|  name  | seat |
++--------+------+
+| Doris  | 2A   |
+| Sofia  | 3B   |
+| Bruce  | 4A   |
+| Edward | 5C   |
+| Kelsey | 6C   |
+| Taylor | 6D   |
+| Kenny  | 7A   |
+| Luca   | 7B   |
++--------+------+
