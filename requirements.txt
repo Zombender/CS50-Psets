@@ -1,0 +1,6 @@
+check50
+help50
+submit50
+debug50
+style50
+compare50
