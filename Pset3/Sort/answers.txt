@@ -1,0 +1,11 @@
+sort1 uses: Bubble
+
+How do you know?: Cuando un arreglo de números está ordenado, el algoritmo de Bubble sort es eficiente.
+
+sort2 uses: Merge
+
+How do you know?: Es más rápido que los demás tipos de ordenamientos.
+
+sort3 uses: Selection
+
+How do you know?: Cuando un arreglo de números está ordenado, el algoritmo de ordenamiento de selección tarda más
