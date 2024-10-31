@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const correctAnswers = {
+                "q1": "Rusia",
+                "q2": "Mandarin"
+            };
+    
+            const button_list_1 = document.querySelectorAll(".choice-button-1");
+            button_list_1.forEach(button =>{
+                button.addEventListener("click", () => {
+                    back_color(button_list_1)
+                    checkAnswer(button, "q1", correctAnswers["q1"]);
+                });
+            });
+            const button_list_2 = document.querySelectorAll(".choice-button-2");
+            button_list_2.forEach(button => {
+                button.addEventListener("click", () => {
+                    back_color(button_list_2)
+                    checkAnswer(button, "q2", correctAnswers["q2"]);
+                });
+            });
+            function back_color(button_list){
+                button_list.forEach(button =>{
+                    button.style.backgroundColor = "#d9edff";
+                });
+            }
+            function checkAnswer(button, questionId, correctAnswer) {
+                button.style.backgroundColor = "blue";
+                if (button.textContent === correctAnswer) {
+                    alert("¡Respuesta correcta!");
+                    button.style.backgroundColor = "green";
+                } else {
+                    alert("Respuesta incorrecta.");
+                    button.style.backgroundColor = "red";
+                }
+            }
+            const freeResponseForm = document.querySelector("form");
+            freeResponseForm.addEventListener("submit", (event) => {
+                event.preventDefault();
+                const userAnswer = document.getElementById("free-response").value.trim();
+                const correctFreeResponse = "QWERTY";
+
+                if (userAnswer.toUpperCase() === correctFreeResponse.toUpperCase()) {
+                    alert("Respuesta correcta");
+                } else {
+                    alert("Respuesta incorrecta.");
+                }
+            });
+        });
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>¿Cuál es el país más grande del mundo?</h3>
+                <ul>
+                    <button class="choice-button-1">Nicaragua</button>
+                    <button class="choice-button-1">Rusia</button>
+                    <button class="choice-button-1">China</button>
+                </ul>
+                <h3>¿Cuál es el idioma más hablado del mundo?</h3>
+                <ul>
+                    <button class="choice-button-2">Ingles</button>
+                    <button class="choice-button-2">Español</button>
+                    <button class="choice-button-2">Mandarin</button>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>¿Cómo se llama la distribución de teclado más usada del mundo?</h3>
+                <form>
+                    <input type="text" id="free-response" name="response">
+                    <input type="submit" value="Comprobar">
+                </form>
+                <!-- TODO: Add free response question here -->
+            </div>
+        </div>
+    </body>
+</html>
